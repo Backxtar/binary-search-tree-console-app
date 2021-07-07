@@ -227,7 +227,7 @@ private:
         Node<T>* top; // top of rotation
 
         if (node->key != root->key)
-            top = searchNode(node->parent->key);
+            top = node->parent;
         else top = nullptr;
 
         Node<T>* bottom = node->c_right; // bottom of rotation (right side)
@@ -244,9 +244,9 @@ private:
             root        = bottom;
             root->key   = 1;
         }
-        if (node->key == top->c_left->key) // if center was on left side - bottom rotate up to left of top
+        else if (node->key == top->c_left->key) // if center was on left side - bottom rotate up to left of top
             top->c_left     = bottom;
-        if (node->key == top->c_right->key)	// if center was on right side - bottom rotate up to right of top
+        else if (node->key == top->c_right->key)	// if center was on right side - bottom rotate up to right of top
             top->c_right    = bottom;
 
         updateKeys(root);
@@ -257,7 +257,7 @@ private:
         Node<T>* top; // top of rotation
 
         if (node->key != root->key)
-            top = searchNode(node->parent->key);
+            top = node->parent;
         else top = nullptr;
 
         Node<T>* bottom = node->c_left; // bottom of rotation (right side)
@@ -274,9 +274,9 @@ private:
             root        = bottom;
             root->key   = 1;
         }
-        if (node->key == top->c_right->key) // if center was on right side - bottom rotate up to left of top
+        else if (node->key == top->c_right->key) // if center was on right side - bottom rotate up to left of top
             top->c_right    = bottom;
-        if (node->key == top->c_left->key)	// if center was on left side - bottom rotate up to right of top
+        else if (node->key == top->c_left->key)	// if center was on left side - bottom rotate up to right of top
             top->c_left     = bottom;
 
         updateKeys(root);
@@ -474,11 +474,6 @@ public:
             rotateRight(node->key);
             balance(node->parent);
         }
-
-        if (!empty(node->c_right))
-            balance(node->parent);
-        if (!empty(node->c_left))
-            balance(node->parent);
     }
 
     void setValue(const long& key, T data) // Change data value

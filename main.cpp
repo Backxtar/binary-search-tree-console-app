@@ -14,15 +14,16 @@ int main() {
 
     system("pause");
 
-    tree.rotateRight(1);
+    tree.rotateLeft(1);
+    //tree.balance();
     tree.printTree(1);
     std::cout << "--------------------" << std::endl;
     std::cout << tree.getLength() << std::endl;
     system("pause");
 
-    //tree.balance();
+    /*tree.balance();
     tree.printTree(1);
-    std::cout << "--------------------" << std::endl;
+    std::cout << "--------------------" << std::endl;*/
 
     std::cout << tree.getRoot()->data << std::endl;
     std::cout << tree.getRoot()->key << std::endl;
