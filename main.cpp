@@ -10,20 +10,22 @@ int main() {
 
     tree.printTree(1);
     std::cout << "--------------------" << std::endl;
+    std::cout << tree.getLength() << std::endl;
 
     system("pause");
 
-    if (tree.deleteNode(1))
-        std::cout << "Success" << std::endl;
-
-    system("pause");
-
+    tree.rotateRight(1);
     tree.printTree(1);
-
+    std::cout << "--------------------" << std::endl;
+    std::cout << tree.getLength() << std::endl;
     system("pause");
+
+    //tree.balance();
+    tree.printTree(1);
+    std::cout << "--------------------" << std::endl;
 
     std::cout << tree.getRoot()->data << std::endl;
-
+    std::cout << tree.getRoot()->key << std::endl;
 
     system("pause");
     //std::cout << tree.searchNode(101)->data << std::endl;

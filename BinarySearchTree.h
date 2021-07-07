@@ -16,21 +16,21 @@ private:
     Node<T>*    current; // Current element
     int         length; // Elements
 
-    bool ins(T& data, Node<T>* node)
+    void ins(T& data, Node<T>* node) // Insert sorted
     {
         if (data < node->data) {
             if (empty(node->c_left))
-                return insLeft(node, data);
+                insLeft(node, data);
             else ins(data, node->c_left);
         }
         else if (data >= node->data) {
             if (empty(node->c_right))
-                return insRight(node, data);
+                insRight(node, data);
             else ins(data, node->c_right);
         }
     }
 
-    bool insRoot(T& data) // Insert root element
+    void insRoot(T& data) // Insert root element
     {
         if (!empty(root))
             throw std::invalid_argument("Error in insRoot(): Node already exists.");
@@ -40,11 +40,9 @@ private:
         root->data  = data;
         current     = root;
         length++;
-
-        return true;
     }
 
-    bool insLeft(Node<T>* parent, T& data) // Insert left child of parent
+    void insLeft(Node<T>* parent, T& data) // Insert left child of parent
     {
         if (empty(root) || empty(parent))
             throw std::out_of_range("Error in insLeft(): Node is a nullptr.");
@@ -58,11 +56,9 @@ private:
         parent->c_left  = child;
         current         = child;
         length++;
-
-        return true;
     }
 
-    bool insRight(Node<T>* parent, T& data) // Insert right child of parent
+    void insRight(Node<T>* parent, T& data) // Insert right child of parent
     {
         if (empty(root) || empty(parent))
             throw std::out_of_range("Error in insLeft(): Node is a nullptr.");
@@ -76,8 +72,6 @@ private:
         parent->c_right = child;
         current         = child;
         length++;
-
-        return true;
     }
 
     void printPreOrder(Node<T>* node, std::string str) // Print pre order
@@ -89,7 +83,6 @@ private:
         }
 
         std::cout << str << node->key << ": " << node->data << std::endl;
-        //str += "| ";
 
         if (!empty(node->c_left))
             printPreOrder(node->c_left, str + "| ");
@@ -164,59 +157,129 @@ private:
         else return nullptr;
     }
 
-    void deleteNode(Node<T>* node) // Delete single Node
+    void delNode(Node<T>* node)
     {
-        Node<T>* pNode   = node->parent;
-        Node<T>* lChild  = node->c_left;
-        Node<T>* rChild  = node->c_right;
-
-        if (empty(lChild) && empty(rChild) && !empty(node))
+        if (empty(node->c_left) && empty(node->c_right) && length == 1) // Edge case only node
         {
             delete node;
+            node = nullptr;
             length--;
-            return;
         }
 
-        if(!empty(pNode))
+        if (empty(node->c_left) && empty(node->c_right)) // Case 0 : 0 Children
         {
-            if(empty(lChild))
+            if (!empty(node->parent->c_left) && node->parent->c_left->key == node->key)
+                node->parent->c_left = nullptr;
+            if (!empty(node->parent->c_right) && node->parent->c_right->key == node->key)
+                node->parent->c_right = nullptr;
+        }
+
+        if (!empty(node->c_left) && empty(node->c_right) || empty(node->c_left) && !empty(node->c_right))  // Case 1 : 1 Child
+        {
+            if (!empty(node->c_right))
             {
-                if(pNode->c_left == node)
-                    pNode->c_left = rChild;
-                else pNode->c_right = rChild;
-                return;
+                node->c_right->parent = node->parent;
+                node->parent->c_right = node->c_right;
+            }
+            if (!empty(node->c_left))
+            {
+                node->c_left->parent = node->parent;
+                node->parent->c_left = node->c_left;
+            }
+        }
+
+        if (!empty(node->c_left) && !empty(node->c_right)) // Case 2 : 2 Children
+        {
+            Node<T>* deleteNode = node;
+            Node<T>* tmp = node->c_right;
+
+            if (node->key == root->key) // Move left child up
+            {
+                node->c_left->key = 1;
+                node->c_left->parent = nullptr;
+                root = node->c_left;
+            }
+            else
+            {
+                node->parent->c_right = node->c_left;
+                node->c_left->parent = node->parent;
             }
 
-            lChild->parent = pNode;
-            if(pNode->c_left == node)
-                pNode->c_left = lChild;
-            else pNode->c_right = lChild;
-        }
-        else
-        {
-            if(empty(lChild))
-            {
-                root = rChild;
-                if(!empty(rChild))
-                    rChild->parent = nullptr;
-                return;
-            }
-            lChild->parent = nullptr;
-            root = lChild;
+            node = node->c_left;
+
+            while (!empty(node->c_right)) // Get lowest child right to append right subtree onto
+                node = node->c_right;
+            node->c_right = tmp;
+            tmp->parent = node->c_right;
+
+            node = deleteNode; // Move current to dangling parent to delete it
         }
 
+        // Delete node
         delete node;
-        node = lChild;
+        node = nullptr;
+        length--;
+        updateKeys(root);
+    }
 
-        while (true)
+    void rotateLeft(Node<T>* node)
+    {
+        Node<T>* top; // top of rotation
+
+        if (node->key != root->key)
+            top = searchNode(node->parent->key);
+        else top = nullptr;
+
+        Node<T>* bottom = node->c_right; // bottom of rotation (right side)
+        Node<T>* sub    = bottom->c_left; // sub of bottom left side (will be appended on left side)
+
+        node->c_right   = sub; // append sub to childRight of center
+        if (!empty(sub))
+            sub->parent = node;
+        bottom->c_left  = node; // append center to left of bottom (will be rotated up) forming new cluster
+        node->parent    = bottom;
+
+        if (empty(top)) // when center was root bottom rotated up to new root
         {
-            if (empty(node->c_right))
-                break;
-            node = node->c_right;
+            root        = bottom;
+            root->key   = 1;
         }
+        if (node->key == top->c_left->key) // if center was on left side - bottom rotate up to left of top
+            top->c_left     = bottom;
+        if (node->key == top->c_right->key)	// if center was on right side - bottom rotate up to right of top
+            top->c_right    = bottom;
 
-        node->c_right = rChild;
-        rChild->parent = node;
+        updateKeys(root);
+    }
+
+    void rotateRight(Node<T>* node)
+    {
+        Node<T>* top; // top of rotation
+
+        if (node->key != root->key)
+            top = searchNode(node->parent->key);
+        else top = nullptr;
+
+        Node<T>* bottom = node->c_left; // bottom of rotation (right side)
+        Node<T>* sub    = bottom->c_right; // sub of bottom left side (will be appended on left side)
+
+        node->c_left    = sub; // append sub to childLeft of center
+        if (!empty(sub))
+            sub->parent = node;
+        bottom->c_right = node; // append center to right of bottom (will be rotated up) forming new cluster
+        node->parent    = bottom;
+
+        if (empty(top)) // when center was root bottom rotated up to new root
+        {
+            root        = bottom;
+            root->key   = 1;
+        }
+        if (node->key == top->c_right->key) // if center was on right side - bottom rotate up to left of top
+            top->c_right    = bottom;
+        if (node->key == top->c_left->key)	// if center was on left side - bottom rotate up to right of top
+            top->c_left     = bottom;
+
+        updateKeys(root);
     }
 
     bool empty() // checks if tree is empty
@@ -279,10 +342,10 @@ public:
         else return current;
     }
 
-    bool ins(T& data) // Insert ank
+    void ins(T& data) // Insert ank
     {
         if (empty())
-            return insRoot(data);
+            insRoot(data);
         else ins(data, root);
     }
 
@@ -339,7 +402,7 @@ public:
         else return result;
     }
 
-    bool deleteNode(const long& key) // delete node ank
+    void delNode(const long& key)
     {
         if (!Util::isBin(key))
             throw std::invalid_argument("Error in deleteNode(): Keys only contains 0 and 1.");
@@ -350,22 +413,75 @@ public:
 
         if (empty(result))
             throw std::invalid_argument("Error in deleteNode(): Key does not exist.");
-        else
-        {
-            int before = getLayers(root);
-            deleteNode(result);
-            int after = getLayers(root);
-
-            if (after < before)
-            {
-                updateKeys(root);
-                length--;
-                return true;
-            }
-        }
+        delNode(result);
     }
 
-    bool setValue(const long& key, T data) // Change data value
+    void rotateLeft(const long& key)
+    {
+        if (!Util::isBin(key))
+            throw std::invalid_argument("Error in rotateLeft(): Keys only contains 0 and 1.");
+        if (empty())
+            throw std::out_of_range("Error in rotateLeft(): Tree is empty.");
+
+        Node<T>* result = searchNode(root, key);
+
+        if (empty(result))
+            throw std::invalid_argument("Error in rotateLeft(): Key does not exist.");
+
+        if (empty(result->c_right))
+            throw std::out_of_range("Error in rotateLeft(): Can not rotate if right subtree is empty.");
+
+        rotateLeft(result);
+    }
+
+    void rotateRight(const long& key)
+    {
+        if (!Util::isBin(key))
+            throw std::invalid_argument("Error in rotateRight(): Keys only contains 0 and 1.");
+        if (empty())
+            throw std::out_of_range("Error in rotateRight(): Tree is empty.");
+
+        Node<T>* result = searchNode(root, key);
+
+        if (empty(result))
+            throw std::invalid_argument("Error in rotateRight(): Key does not exist.");
+
+        if (empty(result->c_left))
+            throw std::out_of_range("Error in rotateRight(): Can not rotate if left subtree is empty.");
+
+        rotateRight(result);
+    }
+
+    void balance()
+    {
+        if (empty() || empty(root->c_left) && empty(root->c_right))
+            throw std::invalid_argument("Error in balance(): Tree is already balanced.");
+
+        balance(root);
+    }
+
+    void balance(Node<T>* node)
+    {
+        int dif = getLayers(root->c_left) - getLayers(root->c_right);
+
+        if (dif < -1)
+        {
+            rotateLeft(node->key);
+            balance(node->parent);
+        }
+        else if (dif > 1)
+        {
+            rotateRight(node->key);
+            balance(node->parent);
+        }
+
+        if (!empty(node->c_right))
+            balance(node->parent);
+        if (!empty(node->c_left))
+            balance(node->parent);
+    }
+
+    void setValue(const long& key, T data) // Change data value
     {
         if (!Util::isBin(key))
             throw std::invalid_argument("Error in setValue(): Keys only contains 0 and 1.");
@@ -380,7 +496,7 @@ public:
             throw std::invalid_argument("Error in setValue(): This node already contains that data.");
 
         result->data = data;
-        return result->data == data;
+        //TODO: Balance tree
     }
 
     bool clear() // Delete tree ank

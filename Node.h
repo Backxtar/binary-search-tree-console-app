@@ -19,15 +19,20 @@ public:
     // Constructor
     Node()
     {
-        data    = NULL;
+        data    = {};
         parent  = nullptr;
         c_left  = nullptr;
         c_right = nullptr;
-        key     = NULL;
+        key     = {};
     }
 
     // Destructor
     ~Node() = default;
+
+    T getData()
+    {
+        return data;
+    }
 private:
 };
 
