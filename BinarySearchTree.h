@@ -25,7 +25,7 @@ private:
     void printInOrder(Node<T>* node, std::string str);
     void printPostOrder(Node<T>* node, std::string str);
     unsigned int getLayers(Node<T>* node, unsigned int height = 0);
-    Node<T>* searchNode(Node<T>* node, const long key);
+    Node<T>* searchNode(Node<T>* node, long key);
     void delNode(Node<T>* node);
     void rotateLeft(Node<T>* node);
     void rotateRight(Node<T>* node);
