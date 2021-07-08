@@ -545,7 +545,7 @@ void BinarySearchTree<T>::clear() // Delete tree ank
 template<typename T>
 void BinarySearchTree<T>::clear(Node<T>* node) // Delete tree
 {
-    if (empty())
+    if (empty(node))
         return;
 
     if (!empty(node->c_left))
@@ -554,8 +554,8 @@ void BinarySearchTree<T>::clear(Node<T>* node) // Delete tree
         clear(node->c_right);
 
     delete node;
-    current == nullptr;
-    root    == nullptr;
+    current = nullptr;
+    root    = nullptr;
     length--;
 }
 
