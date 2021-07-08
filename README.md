@@ -1,7 +1,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Backxtar/Praktikum-5?color=%23fc4e03)](https://github.com/Backxtar/Praktikum-5/issues)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Backxtar/Praktikum-5)
-![GitHub all releases](https://img.shields.io/github/downloads/Backxtar/Praktikum-5/total?color=%2302b033)
-![GitHub repo size](https://img.shields.io/github/repo-size/Backxtar/Praktikum-5?color=%2302b033)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Backxtar/Praktikum-5)](https://github.com/Backxtar/Praktikum-5/releases)
+[![GitHub all releases](https://img.shields.io/github/downloads/Backxtar/Praktikum-5/total?color=%2302b033)](https://github.com/Backxtar/Praktikum-5/releases)
+[![GitHub repo size](https://img.shields.io/github/repo-size/Backxtar/Praktikum-5?color=%2302b033)](https://github.com/Backxtar/Praktikum-5)
 
 <p align="center">
 <img width="798" height="315" src="http://i.epvpimg.com/gYHJcab.png">
