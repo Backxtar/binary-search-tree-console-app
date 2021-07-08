@@ -21,9 +21,9 @@ private:
     void insRoot(T& data);
     void insLeft(Node<T>* parent, T& data);
     void insRight(Node<T>* parent, T& data);
-    void printPreOrder(Node<T>* node, std::string str);
-    void printInOrder(Node<T>* node, std::string str);
-    void printPostOrder(Node<T>* node, std::string str);
+    void printPreOrder(Node<T>* node, const std::string& str);
+    void printInOrder(Node<T>* node, const std::string& str);
+    void printPostOrder(Node<T>* node, const std::string& str);
     unsigned int getLayers(Node<T>* node, unsigned int height = 0);
     Node<T>* searchNode(Node<T>* node, long key);
     void delNode(Node<T>* node);
@@ -175,7 +175,7 @@ void BinarySearchTree<T>::printTree(unsigned int mode) // Print ank
 }
 
 template<typename T>
-void BinarySearchTree<T>::printPreOrder(Node<T>* node, std::string str) // Print pre order
+void BinarySearchTree<T>::printPreOrder(Node<T>* node, const std::string& str) // Print pre order
 {
     if (empty())
     {
@@ -192,7 +192,7 @@ void BinarySearchTree<T>::printPreOrder(Node<T>* node, std::string str) // Print
 }
 
 template<typename T>
-void BinarySearchTree<T>::printInOrder(Node<T>* node, std::string str) // Print in order
+void BinarySearchTree<T>::printInOrder(Node<T>* node, const std::string& str) // Print in order
 {
     if (empty())
     {
@@ -210,7 +210,7 @@ void BinarySearchTree<T>::printInOrder(Node<T>* node, std::string str) // Print 
 }
 
 template<typename T>
-void BinarySearchTree<T>::printPostOrder(Node<T>* node, std::string str) // Print post order
+void BinarySearchTree<T>::printPostOrder(Node<T>* node, const std::string& str) // Print post order
 {
     if (empty())
     {
