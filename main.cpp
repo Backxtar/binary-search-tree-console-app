@@ -3,6 +3,10 @@
 #include "BinarySearchTree.h"
 
 int main(int argc, char* argv[]) {
+    std::string args = "Program started with " + std::to_string(argc) + " ";
+    argc > 1 ? args += "arguments" : args += "argument.";
+    std::cout << args << std::endl << std::endl;
+
     std::vector<int> database;
     BinarySearchTree<int> tree;
     bool stop = false;
