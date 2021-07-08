@@ -15,4 +15,6 @@
 * Print In-Order
 * Print Post-Order
 
-![](http://i.epvpimg.com/GQEReab.png)
+<p align="center">
+  <img width="500" height="167" src="http://i.epvpimg.com/GQEReab.png">
+</p>
