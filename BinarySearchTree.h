@@ -4,9 +4,9 @@
 
 #ifndef P5_CLION_BINARYSEARCHTREE_H
 #define P5_CLION_BINARYSEARCHTREE_H
+#include <iostream>
 #include "Node.h"
 #include "Util.h"
-#include <sstream>
 
 template<typename T>
 class BinarySearchTree
@@ -85,7 +85,7 @@ public:
     void rotateRight(const long& key);
     void balance();
     void setValue(const long& key, T data);
-    bool clear();
+    void clear();
 };
 
 template<typename T>
@@ -494,6 +494,7 @@ void BinarySearchTree<T>::balance()
         throw std::invalid_argument("Error in balance(): Tree is already balanced.");
 
     balance(root);
+    std::cout << "Tree balanced." << std::endl;
 }
 
 template<typename T>
@@ -533,12 +534,12 @@ void BinarySearchTree<T>::setValue(const long& key, T data) // Change data value
 }
 
 template<typename T>
-bool BinarySearchTree<T>::clear() // Delete tree ank
+void BinarySearchTree<T>::clear() // Delete tree ank
 {
     if (empty())
         throw std::out_of_range("Error in setValue(): Tree is empty.");
     clear(root);
-    return empty();
+    std::cout << "Tree wiped." << std::endl;
 }
 
 template<typename T>

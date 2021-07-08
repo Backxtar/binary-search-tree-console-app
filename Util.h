@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <ctime>
 #include <vector>
+#include <string>
 
 class Util
 {
@@ -34,6 +35,28 @@ public:
         return true;
     }
 
+    inline int getChoice()
+    {
+        std::string str;
+
+        while (std::getline(std::cin, str))
+        {
+            if (str.empty())
+            {
+                std::cout << "Error in getChoice(): There was no input. Try again." << std::endl;
+                continue;
+            }
+            size_t const flag = str.find_first_not_of("-0123456789");
+
+            if (flag != std::string::npos)
+            {
+                std::cout << "Error in getChoice(): Wrong input. Try again." << std::endl;
+                continue;
+            }
+            return std::stoi(str);
+        }
+    }
+
     static bool isDigit(const std::string& input)
     {
         for (const char &c : input)
@@ -42,6 +65,13 @@ public:
                 return false;
         }
         return true;
+    }
+
+    static bool getInput(const std::string& input)
+    {
+        if (!isDigit(input))
+            return false;
+        return std::stoi(input) < 1 || std::stoi(input) > 13;
     }
 };
 
