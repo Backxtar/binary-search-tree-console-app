@@ -1,6 +1,5 @@
 [![GitHub issues](https://img.shields.io/github/issues/Backxtar/Praktikum-5?color=%23fc4e03)](https://github.com/Backxtar/Praktikum-5/issues)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Backxtar/Praktikum-5)](https://github.com/Backxtar/Praktikum-5/releases)
-[![GitHub all releases](https://img.shields.io/github/downloads/Backxtar/Praktikum-5/total?color=%2302b033)](https://github.com/Backxtar/Praktikum-5/releases)
 [![GitHub repo size](https://img.shields.io/github/repo-size/Backxtar/Praktikum-5?color=%2302b033)](https://github.com/Backxtar/Praktikum-5)
 
 <p align="center">
@@ -44,6 +43,14 @@ You can use starting arguments to catch issues or loading files like a database.
 
 * ```c++
   int main(int argc, char* argv[])
+  
+This functions are not implemented yet!
+
+* ```c++
+  void dumpTree();
+
+* ```c++
+  void loadFromFile();
 
 ### Screenshots:
 ![Menu](http://i.epvpimg.com/1WtXaab.png)
