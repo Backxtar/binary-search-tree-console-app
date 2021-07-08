@@ -548,9 +548,9 @@ void BinarySearchTree<T>::clear(Node<T>* node) // Delete tree
     if (empty())
         return;
 
-    if (node->c_left != nullptr)
+    if (!empty(node->c_left))
         clear(node->c_left);
-    if (node->c_right != nullptr)
+    if (!empty(node->c_right))
         clear(node->c_right);
 
     delete node;

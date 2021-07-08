@@ -11,9 +11,6 @@ int main(int argc, char* argv[]) {
     BinarySearchTree<int> tree;
     bool stop = false;
 
-    for (int& i : database)
-        tree.ins(i);
-
     while (!stop)
     {
         int tmp;
