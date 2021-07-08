@@ -3,7 +3,9 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/Backxtar/Praktikum-5/total?color=%2302b033)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Backxtar/Praktikum-5?color=%2302b033)
 
-![](http://i.epvpimg.com/gYHJcab.png)
+<p align="center">
+<img width="798" height="315" src="http://i.epvpimg.com/gYHJcab.png">
+</p>
 
 # PAD 2 - Internship 5
 ## This repository is about BinarySearchTrees
