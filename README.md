@@ -3,22 +3,30 @@
 * [P5_Aufgabenstellung](https://www.dropbox.com/s/9hhfpnlrvqa92if/Aufgabe%205.pdf?dl=0)
 
 ### Funktionen die in dem Praktikum gefordert waren:
-* `Insert`
-* `Delete`
-* `Clear`
-* `RotateLeft`
-* `RotateRight`
-* `Balance`
-* `Print Pre-Order`
-* `Print In-Order`
-* `Print Post-Order`
+* ```c++
+  void insert(T data);
+* ```c++
+  void delete(const long& key);
+* ```c++
+  void clear();
+* ```c++
+  void rotateLeft(const long& key);
+* ```c++
+  void rotateRight(const long& key);
+* ```c++
+  void balance()
+* ```c++
+  void printPreOrder(Node<T>* node, const std::string& str);
+* ```c++
+  void printInOrder(Node<T>* node, const std::string& str);
+* ```c++
+  void printPostOrder(Node<T>* node, const std::string& str);
 
 ### Main Methode mit Start-Argumenten:
 
-```c++
-int main(int argc, char* argv[])
-````
+* ```c++
+  int main(int argc, char* argv[])
 
 ### Screenshots:
-![](http://i.epvpimg.com/1WtXaab.png)
-![](http://i.epvpimg.com/In0Udab.png)
+1. ![](http://i.epvpimg.com/1WtXaab.png)
+2. ![](http://i.epvpimg.com/In0Udab.png)
