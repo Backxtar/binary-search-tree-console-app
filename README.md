@@ -1,3 +1,7 @@
+[![GitHub license](https://img.shields.io/github/license/Backxtar/Praktikum-5)](https://github.com/Backxtar/Praktikum-5)
+[![GitHub issues](https://img.shields.io/github/issues/Backxtar/Praktikum-5)](https://github.com/Backxtar/Praktikum-5/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Backxtar/Praktikum-5)](https://github.com/Backxtar/Praktikum-5/stargazers)
+
 # PAD Praktikum 5
 ## In diesem Praktikum geht es um Binärbäume.
 * [P5_Aufgabenstellung](https://www.dropbox.com/s/9hhfpnlrvqa92if/Aufgabe%205.pdf?dl=0)
