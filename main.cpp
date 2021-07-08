@@ -2,7 +2,7 @@
 #include <sstream>
 #include "BinarySearchTree.h"
 
-int main() {
+int main(int argc, char* argv[]) {
     std::vector<int> database;
     BinarySearchTree<int> tree;
     bool stop = false;
