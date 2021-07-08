@@ -2,19 +2,21 @@
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Backxtar/Praktikum-5)
 ![GitHub all releases](https://img.shields.io/github/downloads/Backxtar/Praktikum-5/total?color=%2302b033)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Backxtar/Praktikum-5?color=%2302b033)
-# PAD Praktikum 5
-## In diesem Praktikum geht es um Binärbäume.
-* [P5_Aufgabenstellung](https://www.dropbox.com/s/9hhfpnlrvqa92if/Aufgabe%205.pdf?dl=0)
-* [Programm als Stand-Alone.exe](https://www.dropbox.com/s/e44qwwsjwuubjuf/P5_CLion.exe?dl=0)
 
-### Klassen die in dem Praktikum gefordert waren:
+![](http://i.epvpimg.com/gYHJcab.png)
+
+# PAD 2 - Internship 5
+## This repository is about BinarySearchTrees
+You can download the Worksheet [here](https://www.dropbox.com/s/9hhfpnlrvqa92if/Aufgabe%205.pdf?dl=0).
+
+### Required classes:
 
 * ```c++
   class Node {};
 * ```c++
   class BinarySearchTree {};
 
-### Funktionen die in dem Praktikum gefordert waren:
+### Required functions:
 * ```c++
   void insert(T data);
 * ```c++
@@ -34,11 +36,13 @@
 * ```c++
   void printPostOrder(Node<T>* node, const std::string& str);
 
-### Main Methode mit Start-Argumenten:
+### Optional variants:
+
+You can use starting arguments to catch issues or loading files like a database.
 
 * ```c++
   int main(int argc, char* argv[])
 
 ### Screenshots:
-1. ![](http://i.epvpimg.com/1WtXaab.png)
-2. ![](http://i.epvpimg.com/In0Udab.png)
+![Menu](http://i.epvpimg.com/1WtXaab.png)
+![ExampleTree](http://i.epvpimg.com/In0Udab.png)
