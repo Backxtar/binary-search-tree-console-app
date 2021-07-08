@@ -56,6 +56,18 @@ public:
         clear(root);
     }
 
+    void ins(T& data);
+    unsigned int getLayers();
+    void updateKeys(Node<T>* node);
+    void printTree(unsigned int mode);
+    Node<T>* searchNode(const long& key);
+    void delNode(const long& key);
+    void rotateLeft(const long& key);
+    void rotateRight(const long& key);
+    void balance();
+    void setValue(const long& key, T data);
+    void clear();
+
     int getLength() // Element count getter
     {
         return length;
@@ -74,18 +86,6 @@ public:
             throw std::out_of_range("Error in getCurrent(): Node is a nullptr.");
         else return current;
     }
-
-    void ins(T& data);
-    unsigned int getLayers();
-    void updateKeys(Node<T>* node);
-    void printTree(unsigned int mode);
-    Node<T>* searchNode(const long& key);
-    void delNode(const long& key);
-    void rotateLeft(const long& key);
-    void rotateRight(const long& key);
-    void balance();
-    void setValue(const long& key, T data);
-    void clear();
 };
 
 template<typename T>

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <sstream>
 #include "BinarySearchTree.h"
-#include "Util.h"
 
 int main() {
     std::vector<int> database;
