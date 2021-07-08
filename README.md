@@ -4,7 +4,7 @@
 [![GitHub repo size](https://img.shields.io/github/repo-size/Backxtar/Praktikum-5?color=%2302b033)](https://github.com/Backxtar/Praktikum-5)
 
 <p align="center">
-<img width="798" height="315" src="http://i.epvpimg.com/gYHJcab.png">
+<img src="http://i.epvpimg.com/gYHJcab.png">
 </p>
 
 # PAD 2 - Internship 5
