@@ -14,8 +14,9 @@ int main() {
 
     system("pause");
 
-    tree.rotateLeft(1);
+    //tree.rotateLeft(1);
     //tree.balance();
+    tree.delNode(10);
     tree.printTree(1);
     std::cout << "--------------------" << std::endl;
     std::cout << tree.getLength() << std::endl;
