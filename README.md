@@ -2,6 +2,13 @@
 ## In diesem Praktikum geht es um Binärbäume.
 * [P5_Aufgabenstellung](https://www.dropbox.com/s/9hhfpnlrvqa92if/Aufgabe%205.pdf?dl=0)
 
+### Klassen die in dem Praktikum gefordert waren:
+
+* ```c++
+  class Node {};
+* ```c++
+  class BinarySearchTree {};
+
 ### Funktionen die in dem Praktikum gefordert waren:
 * ```c++
   void insert(T data);
