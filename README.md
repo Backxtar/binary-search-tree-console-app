@@ -13,4 +13,12 @@
 * `Print In-Order`
 * `Print Post-Order`
 
-![](http://i.epvpimg.com/GQEReab.png)
+### Main Methode mit Start-Argumenten:
+
+```c++
+int main(int argc, char* argv[])
+````
+
+### Screenshots:
+![](http://i.epvpimg.com/1WtXaab.png)
+![](http://i.epvpimg.com/In0Udab.png)
