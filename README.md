@@ -1,6 +1,7 @@
 # PAD Praktikum 5
 ## In diesem Praktikum geht es um Binärbäume.
 * [P5_Aufgabenstellung](https://www.dropbox.com/s/9hhfpnlrvqa92if/Aufgabe%205.pdf?dl=0)
+* [Programm als Stand-Alone.exe](https://www.dropbox.com/s/6ht5nqy81wb4jcg/P5_CLion.exe?dl=0)
 
 ### Klassen die in dem Praktikum gefordert waren:
 
